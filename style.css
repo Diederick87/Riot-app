@@ -1,0 +1,96 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+}
+
+label,
+input,
+button {
+  margin: 5px 0;
+}
+
+body {
+  background-image: url('riot1.jpg');
+  color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+.navigation-bar {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 150px;
+  height: 100%;
+  background-color: none;
+}
+
+.navigation-bar a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 20px;
+}
+
+p {
+  padding-left: 10px;
+}
+
+.navigation-bar a p {
+  padding-left: 0px;
+}
+
+h1 {
+  margin: auto;
+  text-align: center;
+}
+
+body {
+  margin-left: 160px;
+}
+
+center {
+  background-color: aliceblue;
+}
+
+div center iframe {
+  background-color: none !important;
+}
+
+/*map css style*/
+#map {
+  height: 180px;
+}
+
+@media screen and (max-width: 600px) {
+  #map {
+    width: auto;
+    height: 300px;
+  }
+}
+
+.navigation-bar {
+  width: 60px;
+  padding-top: 0px;
+}
+
+.navigation-bar a p {
+  display: none;
+}
+
+.navigation-bar .img src {
+  display: block;
+}
+
+body {
+  margin-left: 85px;
+  background-image: url('riot1.jpg');
+  background-size: cover;
+}

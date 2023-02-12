@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Riot Watch</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="Riot_script.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+
+  <script>
+    ('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  </script>
+
+  <script>
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 600 && window.innerWidth > 0) {
+        let map = document.getElementById('map');
+        map.style.width = '220px';
+        map.style.height = '300px';
+        map.style.paddingRight = '5px';
+      }
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <div class="navigation-bar">
+    <a href="index.html"><img src="home32.png">
+      <p>Home</p>
+    </a>
+    <a href="about.html"><img src="about_us.png">
+      <p>About site</p>
+    </a>
+    <a href="articles.html"><img src="article.png">
+      <p>News articles</p>
+    </a>
+    <a href="riot.html"><img src="fire4.png">
+      <p>Riot map</p>
+    </a>
+    <a href="safety.html"><img src="safety.png">
+      <p>Safety</p>
+    </a>
+    <a href="developer.html"><img src="laptop-and-coding.png">
+      <p>Developer</p>
+    </a>
+  </div>
+
+  <h1>Riot map</h1>
+  <p>
+    <center>here you can find the riot map with pin drops on previous riots or current riots</center>
+  </p>
+
+  <p>
+    <center>Map provider: Open Street Map</center>
+  </p>
+
+  <div id="map" style="margin: 0 auto; width: 900px; height: 700px;"></div>
+
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+
+  <script>
+    // Code snippet
+    var map = L.map('map', {
+      center: [-29.07, 24.78],
+      zoom: 5
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add a click event listener to the map
+    map.addEventListener('click', (event) => {
+
+      // Get the coordinates of the click
+      let clickCoords = [event.latlng.lat, event.latlng.lng];
+
+      // Create the marker with the coordinates
+      var marker = L.marker(clickCoords, {
+        draggable: true,
+        icon: L.icon({
+          iconUrl: 'fire4.png',
+          iconSize: [50, 50]
+        })
+      }).addTo(map);
+
+      // Add a popup to the marker with the local South African time
+      marker.bindPopup("<input type='text' id='situationText'/> <br/>Time Stamp: " + (new Date()).toLocaleString("en-ZA"));
+    });
+
+     // Add an event handler to the delete button to remove the marker and popup
+  document.getElementById('deleteButton').onclick = function() {
+    map.removeLayer(marker);
+    marker.removePopup();
+  };
+
+  </script><br>
+
+  <footer>
+    <center>Designed by: Soft Sparks</center>
+  </footer><br>
+
+</body>
+
+</html>
+
+<script>
+  let map = document.getElementById('map');
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 600 && window.innerWidth > 0) {
+      map.style.width = '100%';
+      map.style.height = '100%';
+    }
+  });
+</script>
